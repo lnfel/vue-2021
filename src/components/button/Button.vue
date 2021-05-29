@@ -1,5 +1,10 @@
 <template>
-    <button @click="onCLick()" :class="[computedClass]">
+    <button
+        @click="onCLick()"
+        :class="[
+            color ? `px-4 py-2 rounded text-white tracking-wide bg-${this.color}-600 hover:bg-${this.color}-700 focus:outline-none focus:bg-${this.color}-600 focus:ring-2 focus:ring-offset-2 focus:ring-${this.color}-600 shadow transition duration-700` : `px-4 py-2 rounded text-white tracking-wide bg-blue-600 hover:bg-blue-700 focus:outline-none focus:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 shadow transition duration-700`
+        ]"
+    >
         {{ text }}
     </button>
 </template>
@@ -11,15 +16,10 @@ export default {
         text: String,
         color: String
     },
-    computed: {
-        computedClass() {
-            return `px-4 py-2 rounded text-white tracking-wide bg-${this.color}-600 hover:bg-${this.color}-700 focus:outline-none focus:bg-${this.color}-600 focus:ring-2 focus:ring-offset-2 focus:ring-${this.color}-600 shadow transition duration-700`
-        }
-    },
     methods: {
         onClick() {
             console.log('Hey')
         }
-    },
+    }
 }
 </script>

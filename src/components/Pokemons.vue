@@ -1,17 +1,22 @@
 <template>
     <div v-for="pokemon in pokemons">
-        <div class="flex items-center space-x-2">
-            <img :src="pokemon.sprites.front_default" :alt="pokemon.species.name">
-            <h3 class="">{{ pokemon.species.name }}</h3>
+        <div :key="pokemon.game_indices[0].game_index" class="flex items-center justify-between space-x-2">
+            <Pokemon @release-pokemon="$emit('release-pokemon', {id: pokemon.game_indices[0].game_index, name: pokemon.species.name})" :pokemon="pokemon" />
         </div>
     </div>
 </template>
 
 <script>
+import Pokemon from './Pokemon'
+
 export default {
     name: 'Pokemons',
     props: {
         pokemons: Array
-    }
+    },
+    components: {
+        Pokemon
+    },
+    emits: ['release-pokemon'],
 }
 </script>
